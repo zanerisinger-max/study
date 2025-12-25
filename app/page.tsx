@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -14,7 +14,7 @@ export default function Home() {
         {/* Hamburger menu */}
         <button
           className="text-white text-2xl"
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => setSidebarOpen(true)}
         >
           &#9776; {/* three bars */}
         </button>
@@ -31,16 +31,35 @@ export default function Home() {
         >
           Login
         </button>
-
-        {/* Dropdown Menu */}
-        {menuOpen && (
-          <div className="absolute top-full left-0 bg-gray-700 text-white w-48 p-4 space-y-2 shadow-md rounded">
-            <button className="w-full text-left hover:bg-gray-600 px-2 py-1 rounded">Home</button>
-            <button className="w-full text-left hover:bg-gray-600 px-2 py-1 rounded">Features</button>
-            <button className="w-full text-left hover:bg-gray-600 px-2 py-1 rounded">About</button>
-          </div>
-        )}
       </header>
+
+      {/* Sidebar */}
+      <div
+        className={`fixed top-0 left-0 h-full bg-gray-800 text-white w-64 transform ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out z-50`}
+      >
+        {/* Close button */}
+        <button
+          className="text-2xl p-4"
+          onClick={() => setSidebarOpen(false)}
+        >
+          &times;
+        </button>
+
+        {/* Sidebar Menu */}
+        <nav className="flex flex-col p-4 space-y-4">
+          <button className="text-left hover:bg-gray-700 px-2 py-2 rounded" onClick={() => router.push("/")}>
+            Home
+          </button>
+          <button className="text-left hover:bg-gray-700 px-2 py-2 rounded">
+            Features
+          </button>
+          <button className="text-left hover:bg-gray-700 px-2 py-2 rounded">
+            About
+          </button>
+        </nav>
+      </div>
 
       {/* Main Content */}
       <main className="flex flex-col items-center justify-center flex-1 p-6 mt-10">
@@ -64,4 +83,3 @@ export default function Home() {
     </div>
   );
 }
-
