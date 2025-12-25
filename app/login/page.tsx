@@ -9,9 +9,8 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    // For now, just log to console and later redirect
     console.log("Username:", username, "Password:", password);
-    router.push("/after-login"); // we'll create this page next, for now can go to a placeholder
+    router.push("/after-login"); // placeholder after login
   };
 
   return (
@@ -29,6 +28,7 @@ export default function Login() {
       {/* Centered Login Form */}
       <main className="flex flex-col items-center justify-center flex-1">
         <div className="flex flex-col space-y-4 w-80">
+          {/* Username Field */}
           <input
             type="text"
             placeholder="Username"
@@ -36,25 +36,37 @@ export default function Login() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <input
-            type="password"
-            placeholder="Password"
-            className="px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button
-            onClick={handleLogin}
-            className="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded text-white"
-          >
-            Log In
-          </button>
-          <button
-            onClick={() => router.push("/signup")}
-            className="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded text-white"
-          >
-            Create Account
-          </button>
+
+          {/* Password Field (only shows if username typed) */}
+          {username && (
+            <input
+              type="password"
+              placeholder="Password"
+              className="px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          )}
+
+          {/* Login Button (only shows if password typed) */}
+          {password && (
+            <button
+              onClick={handleLogin}
+              className="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded text-white"
+            >
+              Log In
+            </button>
+          )}
+
+          {/* Create Account link (small blue text) */}
+          <div className="text-center">
+            <span
+              className="text-blue-500 text-sm cursor-pointer hover:underline"
+              onClick={() => router.push("/signup")}
+            >
+              Create Account
+            </span>
+          </div>
         </div>
       </main>
 
