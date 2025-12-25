@@ -15,6 +15,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const handleLogin = () => {
@@ -50,6 +51,7 @@ export default function Login() {
 
           {/* Username Field */}
           <input
+            ref={usernameRef}
             type="text"
             placeholder="Username"
             className="px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500"
@@ -72,8 +74,13 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onKeyDown={(e) => {
+                // Press Enter → login
                 if (e.key === "Enter" && password) {
                   handleLogin();
+                }
+                // Press Backspace on empty password → go back to username
+                if (e.key === "Backspace" && password.length === 0) {
+                  usernameRef.current?.focus();
                 }
               }}
             />
