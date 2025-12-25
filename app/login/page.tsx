@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 
 // Mock users for testing
@@ -14,6 +14,8 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   const handleLogin = () => {
     const userFound = mockUsers.find(
@@ -53,16 +55,27 @@ export default function Login() {
             className="px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && username) {
+                passwordRef.current?.focus();
+              }
+            }}
           />
 
           {/* Password Field (only shows if username typed) */}
           {username && (
             <input
+              ref={passwordRef}
               type="password"
               placeholder="Password"
               className="px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && password) {
+                  handleLogin();
+                }
+              }}
             />
           )}
 
