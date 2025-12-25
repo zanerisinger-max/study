@@ -3,14 +3,30 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+// Mock users for testing
+const mockUsers = [
+  { username: "testuser", password: "password123" },
+  { username: "student", password: "studyco" },
+];
+
 export default function Login() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleLogin = () => {
-    console.log("Username:", username, "Password:", password);
-    router.push("/after-login"); // placeholder after login
+    // Check if username/password matches mock database
+    const userFound = mockUsers.find(
+      (user) => user.username === username && user.password === password
+    );
+
+    if (userFound) {
+      setError("");
+      router.push("/after-login"); // placeholder page
+    } else {
+      setError("Invalid username or password");
+    }
   };
 
   return (
@@ -28,6 +44,9 @@ export default function Login() {
       {/* Centered Login Form */}
       <main className="flex flex-col items-center justify-center flex-1">
         <div className="flex flex-col space-y-4 w-80">
+          {/* Error message */}
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+
           {/* Username Field */}
           <input
             type="text"
@@ -37,28 +56,24 @@ export default function Login() {
             onChange={(e) => setUsername(e.target.value)}
           />
 
-          {/* Password Field (only shows if username typed) */}
-          {username && (
-            <input
-              type="password"
-              placeholder="Password"
-              className="px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          )}
+          {/* Password Field (always visible) */}
+          <input
+            type="password"
+            placeholder="Password"
+            className="px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-          {/* Login Button (only shows if password typed) */}
-          {password && (
-            <button
-              onClick={handleLogin}
-              className="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded text-white"
-            >
-              Log In
-            </button>
-          )}
+          {/* Login Button */}
+          <button
+            onClick={handleLogin}
+            className="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded text-white"
+          >
+            Log In
+          </button>
 
-          {/* Create Account link (small blue text) */}
+          {/* Create Account link */}
           <div className="text-center">
             <span
               className="text-blue-500 text-sm cursor-pointer hover:underline"
