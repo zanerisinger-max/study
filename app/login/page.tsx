@@ -16,7 +16,6 @@ export default function Login() {
   const [error, setError] = useState("");
 
   const handleLogin = () => {
-    // Check if username/password matches mock database
     const userFound = mockUsers.find(
       (user) => user.username === username && user.password === password
     );
@@ -56,22 +55,26 @@ export default function Login() {
             onChange={(e) => setUsername(e.target.value)}
           />
 
-          {/* Password Field (always visible) */}
-          <input
-            type="password"
-            placeholder="Password"
-            className="px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          {/* Password Field (only shows if username typed) */}
+          {username && (
+            <input
+              type="password"
+              placeholder="Password"
+              className="px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          )}
 
-          {/* Login Button */}
-          <button
-            onClick={handleLogin}
-            className="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded text-white"
-          >
-            Log In
-          </button>
+          {/* Login Button (only shows if password typed) */}
+          {password && (
+            <button
+              onClick={handleLogin}
+              className="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded text-white"
+            >
+              Log In
+            </button>
+          )}
 
           {/* Create Account link */}
           <div className="text-center">
