@@ -43,6 +43,11 @@ export default function Home() {
           <button className="text-left hover:bg-gray-800 px-2 py-2 rounded" onClick={() => router.push("/testimonials")}>Testimonials</button>
           <button className="text-left hover:bg-gray-800 px-2 py-2 rounded" onClick={() => router.push("/how-it-works")}>How It Works</button>
           <button className="text-left hover:bg-gray-800 px-2 py-2 rounded" onClick={() => router.push("/footer")}>Footer</button>
+          <button className="text-left hover:bg-gray-800 px-2 py-2 rounded" onClick={() => router.push("/about-us")}>About-us</button>
+>
+  About Us
+</button>
+
         </nav>
       </div>
 
