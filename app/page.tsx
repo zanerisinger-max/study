@@ -25,7 +25,7 @@ export default function Home() {
         </h1>
         <button
           onClick={() => router.push("/login")}
-          className="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded"
+          className="bg-red-700 hover:bg-red-600 px-4 py-2 rounded"
         >
           Login
         </button>
@@ -45,48 +45,40 @@ export default function Home() {
         </button>
         <nav className="flex flex-col p-4 space-y-4">
           <button
-            className="text-left hover:bg-gray-800 px-2 py-2 rounded"
+            className="text-left hover:bg-red-800 px-2 py-2 rounded"
             onClick={() => router.push("/")}
           >
             Home
           </button>
           <button
-            className="text-left hover:bg-gray-800 px-2 py-2 rounded"
-            onClick={() => router.push("/features")}
+            className="text-left hover:bg-red-800 px-2 py-2 rounded"
+            onClick={() => router.push("/pricing")}
           >
-            Features
+            Pricing
           </button>
           <button
-             className="text-left hover:bg-gray-800 px-2 py-2 rounded"
-             onClick={() => router.push("/pricing")}
+            className="text-left hover:bg-red-800 px-2 py-2 rounded"
+            onClick={() => router.push("/about-us")}
           >
-             Pricing
-          </button>
-
-          
-          <button
-            className="text-left hover:bg-gray-800 px-2 py-2 rounded"
-            onClick={() => router.push("/how-it-works")}
-          >  
-          Testimonials
+            About Us
           </button>
           <button
-            className="text-left hover:bg-gray-800 px-2 py-2 rounded"
-            onClick={() => router.push("/how-it-works")}
-          >
-            How It Works
-          </button>
-          <button
-            className="text-left hover:bg-gray-800 px-2 py-2 rounded"
+            className="text-left hover:bg-red-800 px-2 py-2 rounded"
             onClick={() => router.push("/contact")}
           >
             Contact
           </button>
           <button
-            className="text-left hover:bg-gray-800 px-2 py-2 rounded"
-            onClick={() => router.push("/about-us")}
+            className="text-left hover:bg-red-800 px-2 py-2 rounded"
+            onClick={() => router.push("/help")}
           >
-            About Us
+            Help
+          </button>
+          <button
+            className="text-left hover:bg-red-800 px-2 py-2 rounded"
+            onClick={() => router.push("/reviews")}
+          >
+            Reviews
           </button>
         </nav>
       </div>
@@ -99,12 +91,12 @@ export default function Home() {
           <p className="text-lg text-center max-w-xl mb-6">
             Your AI-powered study helper. Learn faster, organize better, and
             get explanations in real-time. Click Login to get started. 
-            This app is stil in progress and not 
-            relesed to the public yet do not use
+            This app is still in progress and not 
+            released to the public yet — do not use.
           </p>
           <button
             onClick={() => router.push("/signup")}
-            className="bg-green-700 hover:bg-green-600 px-6 py-3 rounded text-white text-lg"
+            className="bg-red-700 hover:bg-red-600 px-6 py-3 rounded text-white text-lg"
           >
             Create Account
           </button>
@@ -178,7 +170,7 @@ export default function Home() {
             Study Co is dedicated to creating a distraction-free, effective study platform for students.
           </p>
           <button
-            className="text-blue-500 hover:underline"
+            className="text-red-500 hover:underline"
             onClick={() => router.push("/about-us")}
           >
             Learn More
