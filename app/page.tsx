@@ -6,41 +6,51 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [signupOpen, setSignupOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white">
+    <div className="min-h-screen flex flex-col bg-black text-white relative">
+      {/* Red gradient dripping effect */}
+      <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-red-900 to-transparent pointer-events-none z-0"></div>
+
       {/* Header */}
-      <header className="flex justify-between items-center p-4 bg-black relative">
+      <header className="flex justify-between items-center p-4 bg-black relative z-10">
         <button
-          className="text-white text-2xl"
+          className="text-white text-2xl z-10"
           onClick={() => setSidebarOpen(true)}
         >
           &#9776;
         </button>
         <h1
-          className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-bold cursor-pointer"
+          className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-bold cursor-pointer z-10"
           onClick={() => router.push("/")}
         >
           Study Co
         </h1>
-        <button
-          onClick={() => router.push("/login")}
-          className="bg-red-700 hover:bg-red-600 px-4 py-2 rounded"
-        >
-          Login
-        </button>
+        <div className="flex space-x-4 z-10">
+          <button
+            className="bg-red-700 hover:bg-red-600 px-4 py-2 rounded transform transition-all duration-300 hover:scale-105"
+            onClick={() => setLoginOpen(true)}
+          >
+            Login
+          </button>
+          <button
+            className="bg-green-700 hover:bg-green-600 px-4 py-2 rounded transform transition-all duration-300 hover:scale-105"
+            onClick={() => setSignupOpen(true)}
+          >
+            Create Account
+          </button>
+        </div>
       </header>
 
       {/* Sidebar */}
       <div
         className={`fixed top-0 left-0 h-full bg-gray-900 text-white w-64 transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out z-50`}
+        } transition-transform duration-300 ease-in-out z-20`}
       >
-        <button
-          className="text-2xl p-4"
-          onClick={() => setSidebarOpen(false)}
-        >
+        <button className="text-2xl p-4" onClick={() => setSidebarOpen(false)}>
           &times;
         </button>
         <nav className="flex flex-col p-4 space-y-4">
@@ -84,18 +94,18 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <main className="flex flex-col items-center flex-1 p-10 mt-10 space-y-20">
+      <main className="flex flex-col items-center flex-1 p-10 mt-10 space-y-20 relative z-10">
         {/* Hero Section */}
         <section className="flex flex-col items-center text-center">
           <h2 className="text-4xl font-bold mb-4">Welcome to Study Co</h2>
           <p className="text-lg text-center max-w-xl mb-6">
             Your AI-powered study helper. Learn faster, organize better, and
-            get explanations in real-time. Click Login to get started. 
-            This app is still in progress and not 
-            released to the public yet — do not use.
+            get explanations in real-time. Click Login to get started. This app
+            is still in progress and not released to the public yet — do not
+            use.
           </p>
           <button
-            onClick={() => router.push("/signup")}
+            onClick={() => setSignupOpen(true)}
             className="bg-red-700 hover:bg-red-600 px-6 py-3 rounded text-white text-lg"
           >
             Create Account
@@ -167,7 +177,8 @@ export default function Home() {
         <section className="flex flex-col items-center text-center max-w-4xl w-full">
           <h3 className="text-4xl font-bold mb-4">About Us</h3>
           <p className="text-gray-300 mb-4">
-            Study Co is dedicated to creating a distraction-free, effective study platform for students.
+            Study Co is dedicated to creating a distraction-free, effective
+            study platform for students.
           </p>
           <button
             className="text-red-500 hover:underline"
@@ -182,6 +193,69 @@ export default function Home() {
       <footer className="text-center p-4 text-gray-500">
         &copy; 2025 Study Co™
       </footer>
+
+      {/* Full Page Login Modal */}
+      {loginOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-95 flex flex-col items-center justify-center z-30 transition-all duration-500">
+          <h2 className="text-5xl font-bold mb-6">Login</h2>
+          <input
+            type="text"
+            placeholder="Username"
+            className="mb-4 p-3 rounded text-black w-80"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="mb-4 p-3 rounded text-black w-80"
+          />
+          <button className="bg-red-700 hover:bg-red-600 px-6 py-3 rounded text-white mb-4 w-80">
+            Log In
+          </button>
+          <button
+            className="text-blue-500 hover:underline"
+            onClick={() => { setSignupOpen(true); setLoginOpen(false); }}
+          >
+            Create Account
+          </button>
+          <button
+            className="absolute top-5 right-5 text-3xl"
+            onClick={() => setLoginOpen(false)}
+          >
+            &times;
+          </button>
+        </div>
+      )}
+
+      {/* Full Page Signup Modal */}
+      {signupOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-95 flex flex-col items-center justify-center z-30 transition-all duration-500">
+          <h2 className="text-5xl font-bold mb-6">Create Account</h2>
+          <input
+            type="text"
+            placeholder="Username"
+            className="mb-4 p-3 rounded text-black w-80"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="mb-4 p-3 rounded text-black w-80"
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            className="mb-4 p-3 rounded text-black w-80"
+          />
+          <button className="bg-green-700 hover:bg-green-600 px-6 py-3 rounded text-white mb-4 w-80">
+            Sign Up
+          </button>
+          <button
+            className="absolute top-5 right-5 text-3xl"
+            onClick={() => setSignupOpen(false)}
+          >
+            &times;
+          </button>
+        </div>
+      )}
     </div>
   );
 }
