@@ -8,39 +8,47 @@ export default function Home() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white">
+    <div className="min-h-screen flex flex-col bg-black text-white relative">
+      {/* Red gradient dripping effect - taller */}
+      <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-red-900 to-transparent pointer-events-none z-0"></div>
+
       {/* Header */}
-      <header className="flex justify-between items-center p-4 bg-black relative">
+      <header className="flex justify-between items-center p-4 bg-black relative z-10">
         <button
-          className="text-white text-2xl"
+          className="text-white text-2xl z-10"
           onClick={() => setSidebarOpen(true)}
         >
           &#9776;
         </button>
         <h1
-          className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-bold cursor-pointer"
+          className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-bold cursor-pointer z-10"
           onClick={() => router.push("/")}
         >
           Study Co
         </h1>
-        <button
-          onClick={() => router.push("/login")}
-          className="bg-red-700 hover:bg-red-600 px-4 py-2 rounded"
-        >
-          Login
-        </button>
+        <div className="flex space-x-4 z-10">
+          <button
+            className="bg-red-700 hover:bg-red-600 px-4 py-2 rounded transform transition-transform duration-300 hover:scale-105"
+            onClick={() => router.push("/login")}
+          >
+            Login
+          </button>
+          <button
+            className="bg-green-700 hover:bg-green-600 px-4 py-2 rounded transform transition-transform duration-300 hover:scale-105"
+            onClick={() => router.push("/signup")}
+          >
+            Create Account
+          </button>
+        </div>
       </header>
 
       {/* Sidebar */}
       <div
         className={`fixed top-0 left-0 h-full bg-gray-900 text-white w-64 transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out z-50`}
+        } transition-transform duration-300 ease-in-out z-20`}
       >
-        <button
-          className="text-2xl p-4"
-          onClick={() => setSidebarOpen(false)}
-        >
+        <button className="text-2xl p-4" onClick={() => setSidebarOpen(false)}>
           &times;
         </button>
         <nav className="flex flex-col p-4 space-y-4">
@@ -84,60 +92,55 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <main className="flex flex-col items-center flex-1 p-10 mt-10 space-y-20">
+      <main className="flex flex-col items-center flex-1 p-10 mt-10 space-y-20 relative z-10">
         {/* Hero Section */}
         <section className="flex flex-col items-center text-center">
           <h2 className="text-4xl font-bold mb-4">Welcome to Study Co</h2>
           <p className="text-lg text-center max-w-xl mb-6">
             Your AI-powered study helper. Learn faster, organize better, and
             get explanations in real-time. Click Login to get started. This app
-            is still in progress and not released to the public yet — do not use.
+            is still in progress and not released to the public yet — do not
+            use.
           </p>
           <button
             onClick={() => router.push("/signup")}
-            className="bg-red-700 hover:bg-red-600 px-6 py-3 rounded text-white text-lg"
+            className="bg-red-700 hover:bg-red-600 px-6 py-3 rounded text-white text-lg transform transition-transform duration-300 hover:scale-105"
           >
             Create Account
           </button>
         </section>
 
-        {/* Features Section */}
-        <section className="flex flex-col items-center text-center max-w-6xl w-full">
-          <h3 className="text-4xl font-bold mb-8 border-b-4 border-red-600 pb-2">
-            Features
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {["AI Guidance", "Organized Study", "Progress Tracking", "Easy Interface"].map(
-              (feature) => (
-                <div
-                  key={feature}
-                  className="relative p-4 bg-black border border-gray-700 rounded"
-                >
-                  {/* Always-on red gradient glow */}
-                  <div className="absolute -inset-2 rounded pointer-events-none bg-gradient-to-r from-red-600 via-red-400 to-red-600 opacity-50 filter blur-xl z-[-1]"></div>
+       {/* Features Section */}
+<section className="flex flex-col items-center text-center max-w-6xl w-full">
+  <h3 className="text-4xl font-bold mb-8">Features</h3>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    {["AI Guidance", "Organized Study", "Progress Tracking", "Easy Interface"].map((feature) => (
+      <div
+        key={feature}
+        className="relative p-4 bg-black border border-gray-700 rounded"
+      >
+        {/* Always-visible gradient glow */}
+        <div className="absolute -inset-2 rounded pointer-events-none bg-gradient-to-r from-red-600 via-red-400 to-red-600 opacity-50 filter blur-xl z-[-1]"></div>
 
-                  <h4 className="font-bold mb-2">{feature}</h4>
-                  <p>
-                    {feature === "AI Guidance" &&
-                      "Get real-time AI explanations for difficult concepts."}
-                    {feature === "Organized Study" &&
-                      "Keep your study sessions structured and focused."}
-                    {feature === "Progress Tracking" &&
-                      "Track your learning and see improvements over time."}
-                    {feature === "Easy Interface" &&
-                      "Simple, clean, and distraction-free design."}
-                  </p>
-                </div>
-              )
-            )}
-          </div>
-        </section>
+        <h4 className="font-bold mb-2">{feature}</h4>
+        <p>
+          {feature === "AI Guidance" &&
+            "Get real-time AI explanations for difficult concepts."}
+          {feature === "Organized Study" &&
+            "Keep your study sessions structured and focused."}
+          {feature === "Progress Tracking" &&
+            "Track your learning and see improvements over time."}
+          {feature === "Easy Interface" &&
+            "Simple, clean, and distraction-free design."}
+        </p>
+      </div>
+    ))}
+  </div>
+</section>
 
         {/* How It Works Section */}
         <section className="flex flex-col items-center text-center max-w-6xl w-full">
-          <h3 className="text-4xl font-bold mb-8 border-b-4 border-red-600 pb-2">
-            How It Works
-          </h3>
+          <h3 className="text-4xl font-bold mb-8">How It Works</h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <h4 className="font-bold mb-2">1. Sign Up</h4>
@@ -159,36 +162,33 @@ export default function Home() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="flex flex-col items-center text-center max-w-6xl w-full">
-          <h3 className="text-4xl font-bold mb-8 border-b-4 border-red-600 pb-2">
-            Testimonials
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              { text: `"Study Co helped me ace my exams! Highly recommend."`, author: "- Jane D." },
-              { text: `"The AI explanations make learning so much easier."`, author: "- Alex K." }
-            ].map((testimonial, idx) => (
-              <div
-                key={idx}
-                className="relative p-4 bg-black border border-gray-700 rounded"
-              >
-                {/* Always-on red gradient glow */}
-                <div className="absolute -inset-2 rounded pointer-events-none bg-gradient-to-r from-red-600 via-red-400 to-red-600 opacity-50 filter blur-xl z-[-1]"></div>
+<section className="flex flex-col items-center text-center max-w-6xl w-full">
+  <h3 className="text-4xl font-bold mb-8">Testimonials</h3>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {[
+      { text: `"Study Co helped me ace my exams! Highly recommend."`, author: "- Jane D." },
+      { text: `"The AI explanations make learning so much easier."`, author: "- Alex K." }
+    ].map((testimonial, idx) => (
+      <div
+        key={idx}
+        className="relative p-4 bg-black border border-gray-700 rounded"
+      >
+        {/* Always-visible gradient glow */}
+        <div className="absolute -inset-2 rounded pointer-events-none bg-gradient-to-r from-red-600 via-red-400 to-red-600 opacity-50 filter blur-xl z-[-1]"></div>
 
-                <p>{testimonial.text}</p>
-                <p className="mt-2 font-bold">{testimonial.author}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <p>{testimonial.text}</p>
+        <p className="mt-2 font-bold">{testimonial.author}</p>
+      </div>
+    ))}
+  </div>
+</section>
 
         {/* About Us Preview */}
         <section className="flex flex-col items-center text-center max-w-4xl w-full">
-          <h3 className="text-4xl font-bold mb-4 border-b-4 border-red-600 pb-2">
-            About Us
-          </h3>
+          <h3 className="text-4xl font-bold mb-4">About Us</h3>
           <p className="text-gray-300 mb-4">
-            Study Co is dedicated to creating a distraction-free, effective study platform for students.
+            Study Co is dedicated to creating a distraction-free, effective
+            study platform for students.
           </p>
           <button
             className="text-red-500 hover:underline"
