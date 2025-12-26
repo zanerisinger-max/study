@@ -6,13 +6,11 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [loginOpen, setLoginOpen] = useState(false);
-  const [signupOpen, setSignupOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col bg-black text-white relative">
       {/* Red gradient dripping effect */}
-      <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-red-900 to-transparent pointer-events-none z-0"></div>
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-red-900 to-transparent pointer-events-none z-0"></div>
 
       {/* Header */}
       <header className="flex justify-between items-center p-4 bg-black relative z-10">
@@ -30,14 +28,14 @@ export default function Home() {
         </h1>
         <div className="flex space-x-4 z-10">
           <button
-            className="bg-red-700 hover:bg-red-600 px-4 py-2 rounded transform transition-all duration-300 hover:scale-105"
-            onClick={() => setLoginOpen(true)}
+            className="bg-red-700 hover:bg-red-600 px-4 py-2 rounded transform transition-transform duration-300 hover:scale-105"
+            onClick={() => router.push("/login")}
           >
             Login
           </button>
           <button
-            className="bg-green-700 hover:bg-green-600 px-4 py-2 rounded transform transition-all duration-300 hover:scale-105"
-            onClick={() => setSignupOpen(true)}
+            className="bg-green-700 hover:bg-green-600 px-4 py-2 rounded transform transition-transform duration-300 hover:scale-105"
+            onClick={() => router.push("/signup")}
           >
             Create Account
           </button>
@@ -105,8 +103,8 @@ export default function Home() {
             use.
           </p>
           <button
-            onClick={() => setSignupOpen(true)}
-            className="bg-red-700 hover:bg-red-600 px-6 py-3 rounded text-white text-lg"
+            onClick={() => router.push("/signup")}
+            className="bg-red-700 hover:bg-red-600 px-6 py-3 rounded text-white text-lg transform transition-transform duration-300 hover:scale-105"
           >
             Create Account
           </button>
@@ -193,69 +191,6 @@ export default function Home() {
       <footer className="text-center p-4 text-gray-500">
         &copy; 2025 Study Co™
       </footer>
-
-      {/* Full Page Login Modal */}
-      {loginOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-95 flex flex-col items-center justify-center z-30 transition-all duration-500">
-          <h2 className="text-5xl font-bold mb-6">Login</h2>
-          <input
-            type="text"
-            placeholder="Username"
-            className="mb-4 p-3 rounded text-black w-80"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="mb-4 p-3 rounded text-black w-80"
-          />
-          <button className="bg-red-700 hover:bg-red-600 px-6 py-3 rounded text-white mb-4 w-80">
-            Log In
-          </button>
-          <button
-            className="text-blue-500 hover:underline"
-            onClick={() => { setSignupOpen(true); setLoginOpen(false); }}
-          >
-            Create Account
-          </button>
-          <button
-            className="absolute top-5 right-5 text-3xl"
-            onClick={() => setLoginOpen(false)}
-          >
-            &times;
-          </button>
-        </div>
-      )}
-
-      {/* Full Page Signup Modal */}
-      {signupOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-95 flex flex-col items-center justify-center z-30 transition-all duration-500">
-          <h2 className="text-5xl font-bold mb-6">Create Account</h2>
-          <input
-            type="text"
-            placeholder="Username"
-            className="mb-4 p-3 rounded text-black w-80"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="mb-4 p-3 rounded text-black w-80"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            className="mb-4 p-3 rounded text-black w-80"
-          />
-          <button className="bg-green-700 hover:bg-green-600 px-6 py-3 rounded text-white mb-4 w-80">
-            Sign Up
-          </button>
-          <button
-            className="absolute top-5 right-5 text-3xl"
-            onClick={() => setSignupOpen(false)}
-          >
-            &times;
-          </button>
-        </div>
-      )}
     </div>
   );
 }
