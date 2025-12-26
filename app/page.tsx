@@ -57,10 +57,18 @@ export default function Home() {
             Features
           </button>
           <button
-            className="text-left hover:bg-gray-800 px-2 py-2 rounded"
-            onClick={() => router.push("/testimonials")}
+             className="text-left hover:bg-gray-800 px-2 py-2 rounded"
+             onClick={() => router.push("/pricing")}
           >
-            Testimonials
+             Pricing
+          </button>
+
+          
+          <button
+            className="text-left hover:bg-gray-800 px-2 py-2 rounded"
+            onClick={() => router.push("/how-it-works")}
+          >  
+          Testimonials
           </button>
           <button
             className="text-left hover:bg-gray-800 px-2 py-2 rounded"
