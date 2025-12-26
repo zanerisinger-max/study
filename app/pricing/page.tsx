@@ -8,9 +8,9 @@ export default function Pricing() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const plans = [
-    { name: "Free", description: "Basic AI study tools with limited access.", price: "$0/month" },
-    { name: "Pro", description: "Full AI guidance and unlimited features.", price: "$9.99/month" },
-    { name: "Premium", description: "Priority support and advanced tools.", price: "$19.99/month" },
+    { name: "Free", description: "Basic AI study tools with limited access.", price: "$0/month", route: "/pricing/free" },
+    { name: "Pro", description: "Full AI guidance and unlimited features.", price: "$9.99/month", route: "/pricing/pro" },
+    { name: "Premium", description: "Priority support and advanced tools.", price: "$19.99/month", route: "/pricing/premium" },
   ];
 
   return (
@@ -77,7 +77,7 @@ export default function Pricing() {
         <section className="flex flex-col items-center text-center">
           <h2 className="text-5xl font-bold mb-4">Pricing</h2>
           <p className="text-lg text-gray-300 max-w-2xl">
-            Choose the plan that fits your learning style. Upgrade anytime to get more features.
+            Choose the plan that fits your learning style. Click a plan for more details.
           </p>
         </section>
 
@@ -86,6 +86,7 @@ export default function Pricing() {
           {plans.map((plan) => (
             <div
               key={plan.name}
+              onClick={() => router.push(plan.route)}
               className="p-6 border border-gray-700 rounded transition-transform duration-300 ease-in-out transform hover:scale-105 hover:border-red-500 cursor-pointer"
             >
               <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
