@@ -9,8 +9,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-black text-white relative">
-      {/* Red gradient dripping effect */}
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-red-900 to-transparent pointer-events-none z-0"></div>
+      {/* Red gradient dripping effect - taller */}
+      <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-red-900 to-transparent pointer-events-none z-0"></div>
 
       {/* Header */}
       <header className="flex justify-between items-center p-4 bg-black relative z-10">
@@ -114,22 +114,26 @@ export default function Home() {
         <section className="flex flex-col items-center text-center max-w-6xl w-full">
           <h3 className="text-4xl font-bold mb-8">Features</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="p-4 border border-gray-700 rounded">
-              <h4 className="font-bold mb-2">AI Guidance</h4>
-              <p>Get real-time AI explanations for difficult concepts.</p>
-            </div>
-            <div className="p-4 border border-gray-700 rounded">
-              <h4 className="font-bold mb-2">Organized Study</h4>
-              <p>Keep your study sessions structured and focused.</p>
-            </div>
-            <div className="p-4 border border-gray-700 rounded">
-              <h4 className="font-bold mb-2">Progress Tracking</h4>
-              <p>Track your learning and see improvements over time.</p>
-            </div>
-            <div className="p-4 border border-gray-700 rounded">
-              <h4 className="font-bold mb-2">Easy Interface</h4>
-              <p>Simple, clean, and distraction-free design.</p>
-            </div>
+            {["AI Guidance", "Organized Study", "Progress Tracking", "Easy Interface"].map((feature) => (
+              <div
+                key={feature}
+                className="relative p-4 border border-gray-700 rounded group"
+              >
+                {/* Gradient glow around box */}
+                <div className="absolute -inset-1 rounded bg-gradient-to-r from-red-600 via-red-400 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[-1]"></div>
+                <h4 className="font-bold mb-2">{feature}</h4>
+                <p>
+                  {feature === "AI Guidance" &&
+                    "Get real-time AI explanations for difficult concepts."}
+                  {feature === "Organized Study" &&
+                    "Keep your study sessions structured and focused."}
+                  {feature === "Progress Tracking" &&
+                    "Track your learning and see improvements over time."}
+                  {feature === "Easy Interface" &&
+                    "Simple, clean, and distraction-free design."}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -160,14 +164,20 @@ export default function Home() {
         <section className="flex flex-col items-center text-center max-w-6xl w-full">
           <h3 className="text-4xl font-bold mb-8">Testimonials</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-4 border border-gray-700 rounded">
-              <p>"Study Co helped me ace my exams! Highly recommend."</p>
-              <p className="mt-2 font-bold">- Jane D.</p>
-            </div>
-            <div className="p-4 border border-gray-700 rounded">
-              <p>"The AI explanations make learning so much easier."</p>
-              <p className="mt-2 font-bold">- Alex K.</p>
-            </div>
+            {[
+              { text: `"Study Co helped me ace my exams! Highly recommend."`, author: "- Jane D." },
+              { text: `"The AI explanations make learning so much easier."`, author: "- Alex K." }
+            ].map((testimonial, idx) => (
+              <div
+                key={idx}
+                className="relative p-4 border border-gray-700 rounded group"
+              >
+                {/* Gradient glow around box */}
+                <div className="absolute -inset-1 rounded bg-gradient-to-r from-red-600 via-red-400 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[-1]"></div>
+                <p>{testimonial.text}</p>
+                <p className="mt-2 font-bold">{testimonial.author}</p>
+              </div>
+            ))}
           </div>
         </section>
 
