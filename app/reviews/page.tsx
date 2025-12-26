@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function AboutUs() {
+export default function Reviews() {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -79,41 +79,27 @@ export default function AboutUs() {
 
       {/* Main Content */}
       <main className="flex flex-col items-center flex-1 p-10 mt-10 space-y-12 max-w-5xl mx-auto">
-        <h2 className="text-5xl font-bold mb-4 text-center">About Us</h2>
-        <p className="text-lg text-gray-300 text-center">
-          Study Co is dedicated to creating a distraction-free, effective study platform for students. 
-          Our mission is to help learners improve faster, stay organized, and get real-time AI assistance 
-          for all their subjects.
+        <h2 className="text-5xl font-bold mb-4 text-center">Reviews</h2>
+        <p className="text-lg text-gray-300 text-center mb-8">
+          See what students are saying about Study Co.
         </p>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mt-10">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
           <div className="p-6 border border-gray-700 rounded">
-            <h3 className="text-2xl font-bold mb-2">Our Mission</h3>
-            <p>
-              To provide accessible, AI-powered study tools that help students
-              reach their full potential.
-            </p>
+            <p>"Study Co helped me improve my grades faster than I expected!"</p>
+            <p className="mt-2 font-bold">- Sarah L.</p>
           </div>
           <div className="p-6 border border-gray-700 rounded">
-            <h3 className="text-2xl font-bold mb-2">Our Vision</h3>
-            <p>
-              To become the go-to platform for students worldwide, combining
-              technology and education seamlessly.
-            </p>
+            <p>"The AI explanations are super clear and easy to follow."</p>
+            <p className="mt-2 font-bold">- Michael R.</p>
           </div>
           <div className="p-6 border border-gray-700 rounded">
-            <h3 className="text-2xl font-bold mb-2">Our Values</h3>
-            <p>
-              Innovation, transparency, and dedication to making learning easier
-              for every student.
-            </p>
+            <p>"I love how organized my study sessions are now."</p>
+            <p className="mt-2 font-bold">- Priya S.</p>
           </div>
           <div className="p-6 border border-gray-700 rounded">
-            <h3 className="text-2xl font-bold mb-2">Meet the Team</h3>
-            <p>
-              A passionate group of developers, educators, and AI specialists
-              working together to improve study experiences.
-            </p>
+            <p>"Study Co is a must-have tool for every student!"</p>
+            <p className="mt-2 font-bold">- David K.</p>
           </div>
         </section>
       </main>
