@@ -110,34 +110,33 @@ export default function Home() {
           </button>
         </section>
 
-        {/* Features Section */}
-        <section className="flex flex-col items-center text-center max-w-6xl w-full">
-          <h3 className="text-4xl font-bold mb-8">Features</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {["AI Guidance", "Organized Study", "Progress Tracking", "Easy Interface"].map((feature) => (
-              <div
-  key={feature}
-  className="relative p-4 bg-black border border-gray-700 rounded group"
->
-  {/* Gradient glow outside the box */}
-  <div className="absolute -inset-2 rounded pointer-events-none bg-gradient-to-r from-red-600 via-red-400 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 filter blur-xl z-[-1]"></div>
+       {/* Features Section */}
+<section className="flex flex-col items-center text-center max-w-6xl w-full">
+  <h3 className="text-4xl font-bold mb-8">Features</h3>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    {["AI Guidance", "Organized Study", "Progress Tracking", "Easy Interface"].map((feature) => (
+      <div
+        key={feature}
+        className="relative p-4 bg-black border border-gray-700 rounded"
+      >
+        {/* Always-visible gradient glow */}
+        <div className="absolute -inset-2 rounded pointer-events-none bg-gradient-to-r from-red-600 via-red-400 to-red-600 opacity-50 filter blur-xl z-[-1]"></div>
 
-  <h4 className="font-bold mb-2">{feature}</h4>
-  <p>
-    {feature === "AI Guidance" &&
-      "Get real-time AI explanations for difficult concepts."}
-    {feature === "Organized Study" &&
-      "Keep your study sessions structured and focused."}
-    {feature === "Progress Tracking" &&
-      "Track your learning and see improvements over time."}
-    {feature === "Easy Interface" &&
-      "Simple, clean, and distraction-free design."}
-  </p>
-</div>
-
-            ))}
-          </div>
-        </section>
+        <h4 className="font-bold mb-2">{feature}</h4>
+        <p>
+          {feature === "AI Guidance" &&
+            "Get real-time AI explanations for difficult concepts."}
+          {feature === "Organized Study" &&
+            "Keep your study sessions structured and focused."}
+          {feature === "Progress Tracking" &&
+            "Track your learning and see improvements over time."}
+          {feature === "Easy Interface" &&
+            "Simple, clean, and distraction-free design."}
+        </p>
+      </div>
+    ))}
+  </div>
+</section>
 
         {/* How It Works Section */}
         <section className="flex flex-col items-center text-center max-w-6xl w-full">
@@ -172,10 +171,10 @@ export default function Home() {
     ].map((testimonial, idx) => (
       <div
         key={idx}
-        className="relative p-4 bg-black border border-gray-700 rounded group"
+        className="relative p-4 bg-black border border-gray-700 rounded"
       >
-        {/* Gradient glow outside the box */}
-        <div className="absolute -inset-2 rounded pointer-events-none bg-gradient-to-r from-red-600 via-red-400 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 filter blur-xl z-[-1]"></div>
+        {/* Always-visible gradient glow */}
+        <div className="absolute -inset-2 rounded pointer-events-none bg-gradient-to-r from-red-600 via-red-400 to-red-600 opacity-50 filter blur-xl z-[-1]"></div>
 
         <p>{testimonial.text}</p>
         <p className="mt-2 font-bold">{testimonial.author}</p>
