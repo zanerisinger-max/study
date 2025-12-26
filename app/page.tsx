@@ -11,7 +11,10 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-black text-white">
       {/* Header */}
       <header className="flex justify-between items-center p-4 bg-black relative">
-        <button className="text-white text-2xl" onClick={() => setSidebarOpen(true)}>
+        <button
+          className="text-white text-2xl"
+          onClick={() => setSidebarOpen(true)}
+        >
           &#9776;
         </button>
         <h1
@@ -34,36 +37,149 @@ export default function Home() {
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out z-50`}
       >
-        <button className="text-2xl p-4" onClick={() => setSidebarOpen(false)}>
+        <button
+          className="text-2xl p-4"
+          onClick={() => setSidebarOpen(false)}
+        >
           &times;
         </button>
         <nav className="flex flex-col p-4 space-y-4">
-          <button className="text-left hover:bg-gray-800 px-2 py-2 rounded" onClick={() => router.push("/")}>Home</button>
-          <button className="text-left hover:bg-gray-800 px-2 py-2 rounded" onClick={() => router.push("/features")}>Features</button>
-          <button className="text-left hover:bg-gray-800 px-2 py-2 rounded" onClick={() => router.push("/testimonials")}>Testimonials</button>
-          <button className="text-left hover:bg-gray-800 px-2 py-2 rounded" onClick={() => router.push("/how-it-works")}>How It Works</button>
-          <button className="text-left hover:bg-gray-800 px-2 py-2 rounded" onClick={() => router.push("/contact")}>Contact</button>
-          <button className="text-left hover:bg-gray-800 px-2 py-2 rounded" onClick={() => router.push("/about-us")}
->
-  About Us
-</button>
-
+          <button
+            className="text-left hover:bg-gray-800 px-2 py-2 rounded"
+            onClick={() => router.push("/")}
+          >
+            Home
+          </button>
+          <button
+            className="text-left hover:bg-gray-800 px-2 py-2 rounded"
+            onClick={() => router.push("/features")}
+          >
+            Features
+          </button>
+          <button
+            className="text-left hover:bg-gray-800 px-2 py-2 rounded"
+            onClick={() => router.push("/testimonials")}
+          >
+            Testimonials
+          </button>
+          <button
+            className="text-left hover:bg-gray-800 px-2 py-2 rounded"
+            onClick={() => router.push("/how-it-works")}
+          >
+            How It Works
+          </button>
+          <button
+            className="text-left hover:bg-gray-800 px-2 py-2 rounded"
+            onClick={() => router.push("/contact")}
+          >
+            Contact
+          </button>
+          <button
+            className="text-left hover:bg-gray-800 px-2 py-2 rounded"
+            onClick={() => router.push("/about-us")}
+          >
+            About Us
+          </button>
         </nav>
       </div>
 
-      {/* Hero Section */}
-      <main className="flex flex-col items-center justify-center flex-1 p-10 mt-10">
-        <h2 className="text-4xl font-bold mb-4">Welcome to Study Co</h2>
-        <p className="text-lg text-center max-w-xl mb-6">
-          Your AI-powered study helper. Learn faster, organize better, and get explanations in real-time. Click Login to get started.
-        </p>
-        <button
-          onClick={() => router.push("/signup")}
-          className="bg-green-700 hover:bg-green-600 px-6 py-3 rounded text-white text-lg"
-        >
-          Create Account
-        </button>
+      {/* Main Content */}
+      <main className="flex flex-col items-center flex-1 p-10 mt-10 space-y-20">
+        {/* Hero Section */}
+        <section className="flex flex-col items-center text-center">
+          <h2 className="text-4xl font-bold mb-4">Welcome to Study Co</h2>
+          <p className="text-lg text-center max-w-xl mb-6">
+            Your AI-powered study helper. Learn faster, organize better, and
+            get explanations in real-time. Click Login to get started.
+          </p>
+          <button
+            onClick={() => router.push("/signup")}
+            className="bg-green-700 hover:bg-green-600 px-6 py-3 rounded text-white text-lg"
+          >
+            Create Account
+          </button>
+        </section>
+
+        {/* Features Section */}
+        <section className="flex flex-col items-center text-center max-w-6xl w-full">
+          <h3 className="text-4xl font-bold mb-8">Features</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="p-4 border border-gray-700 rounded">
+              <h4 className="font-bold mb-2">AI Guidance</h4>
+              <p>Get real-time AI explanations for difficult concepts.</p>
+            </div>
+            <div className="p-4 border border-gray-700 rounded">
+              <h4 className="font-bold mb-2">Organized Study</h4>
+              <p>Keep your study sessions structured and focused.</p>
+            </div>
+            <div className="p-4 border border-gray-700 rounded">
+              <h4 className="font-bold mb-2">Progress Tracking</h4>
+              <p>Track your learning and see improvements over time.</p>
+            </div>
+            <div className="p-4 border border-gray-700 rounded">
+              <h4 className="font-bold mb-2">Easy Interface</h4>
+              <p>Simple, clean, and distraction-free design.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works Section */}
+        <section className="flex flex-col items-center text-center max-w-6xl w-full">
+          <h3 className="text-4xl font-bold mb-8">How It Works</h3>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h4 className="font-bold mb-2">1. Sign Up</h4>
+              <p>Create an account and start your journey.</p>
+            </div>
+            <div>
+              <h4 className="font-bold mb-2">2. Choose Topics</h4>
+              <p>Select subjects you want to study.</p>
+            </div>
+            <div>
+              <h4 className="font-bold mb-2">3. Get AI Help</h4>
+              <p>Receive guidance and explanations from AI.</p>
+            </div>
+            <div>
+              <h4 className="font-bold mb-2">4. Track Progress</h4>
+              <p>Monitor your learning and stay on track.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="flex flex-col items-center text-center max-w-6xl w-full">
+          <h3 className="text-4xl font-bold mb-8">Testimonials</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="p-4 border border-gray-700 rounded">
+              <p>"Study Co helped me ace my exams! Highly recommend."</p>
+              <p className="mt-2 font-bold">- Jane D.</p>
+            </div>
+            <div className="p-4 border border-gray-700 rounded">
+              <p>"The AI explanations make learning so much easier."</p>
+              <p className="mt-2 font-bold">- Alex K.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* About Us Preview */}
+        <section className="flex flex-col items-center text-center max-w-4xl w-full">
+          <h3 className="text-4xl font-bold mb-4">About Us</h3>
+          <p className="text-gray-300 mb-4">
+            Study Co is dedicated to creating a distraction-free, effective study platform for students.
+          </p>
+          <button
+            className="text-blue-500 hover:underline"
+            onClick={() => router.push("/about-us")}
+          >
+            Learn More
+          </button>
+        </section>
       </main>
+
+      {/* Footer */}
+      <footer className="text-center p-4 text-gray-500">
+        &copy; 2025 Study Co™
+      </footer>
     </div>
   );
 }
