@@ -11,6 +11,10 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-black text-white relative">
       {/* Red gradient dripping effect - taller */}
       <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-red-900 to-transparent pointer-events-none z-0"></div>
+{/* Animated Top Gradient */}
+<div className="absolute top-0 left-0 w-full h-64 pointer-events-none overflow-hidden z-0">
+  <div className="absolute w-full h-full bg-gradient-to-b from-red-600 via-red-800 to-transparent animate-drip"></div>
+</div>
 
       {/* Header */}
       <header className="flex justify-between items-center p-4 bg-black relative z-10">
