@@ -90,7 +90,9 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-4">Welcome to Study Co</h2>
           <p className="text-lg text-center max-w-xl mb-6">
             Your AI-powered study helper. Learn faster, organize better, and
-            get explanations in real-time. Click Login to get started.
+            get explanations in real-time. Click Login to get started. 
+            This app is stil in progress and not 
+            relesed to the public yet do not use
           </p>
           <button
             onClick={() => router.push("/signup")}
