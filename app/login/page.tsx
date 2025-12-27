@@ -32,86 +32,63 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col">
-      {/* Top Center Logo */}
-      <header className="flex justify-center p-6">
-        <h1
-          className="text-3xl font-bold cursor-pointer"
-          onClick={() => router.push("/")}
-        >
-          Study Co
-        </h1>
-      </header>
+    <main className="flex flex-col items-center justify-center flex-1 mt-24">
+      <div className="flex flex-col space-y-4 w-80">
+        {/* Error message */}
+        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 
-      {/* Centered Login Form */}
-      <main className="flex flex-col items-center justify-center flex-1">
-        <div className="flex flex-col space-y-4 w-80">
-          {/* Error message */}
-          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+        {/* Username Field */}
+        <input
+          ref={usernameRef}
+          type="text"
+          placeholder="Username"
+          className="px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && username) {
+              passwordRef.current?.focus();
+            }
+          }}
+        />
 
-          {/* Username Field */}
+        {/* Password Field */}
+        {username && (
           <input
-            ref={usernameRef}
-            type="text"
-            placeholder="Username"
+            ref={passwordRef}
+            type="password"
+            placeholder="Password"
             className="px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             onKeyDown={(e) => {
-              if (e.key === "Enter" && username) {
-                passwordRef.current?.focus();
-              }
+              if (e.key === "Enter" && password) handleLogin();
+              if (e.key === "Backspace" && password.length === 0)
+                usernameRef.current?.focus();
             }}
           />
+        )}
 
-          {/* Password Field (only shows if username typed) */}
-          {username && (
-            <input
-              ref={passwordRef}
-              type="password"
-              placeholder="Password"
-              className="px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              onKeyDown={(e) => {
-                // Press Enter → login
-                if (e.key === "Enter" && password) {
-                  handleLogin();
-                }
-                // Press Backspace on empty password → go back to username
-                if (e.key === "Backspace" && password.length === 0) {
-                  usernameRef.current?.focus();
-                }
-              }}
-            />
-          )}
+        {/* Login Button */}
+        {password && (
+          <button
+            onClick={handleLogin}
+            className="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded text-white"
+          >
+            Log In
+          </button>
+        )}
 
-          {/* Login Button (only shows if password typed) */}
-          {password && (
-            <button
-              onClick={handleLogin}
-              className="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded text-white"
-            >
-              Log In
-            </button>
-          )}
-
-          {/* Create Account link */}
-          <div className="text-center">
-            <span
-              className="text-blue-500 text-sm cursor-pointer hover:underline"
-              onClick={() => router.push("/signup")}
-            >
-              Create Account
-            </span>
-          </div>
+        {/* Create Account link */}
+        <div className="text-center">
+          <span
+            className="text-blue-500 text-sm cursor-pointer hover:underline"
+            onClick={() => router.push("/signup")}
+          >
+            Create Account
+          </span>
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="text-center p-4 text-gray-500">
-        &copy; 2025 Study Co™
-      </footer>
-    </div>
+      </div>
+    </main>
   );
 }
