@@ -1,127 +1,33 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-
 export default function AboutUs() {
-  const router = useRouter();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white">
-      {/* Header */}
-      <header className="flex justify-between items-center p-4 bg-black relative">
-        <button
-          className="text-white text-2xl"
-          onClick={() => setSidebarOpen(true)}
-        >
-          &#9776;
-        </button>
-        <h1
-          className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-bold cursor-pointer"
-          onClick={() => router.push("/")}
-        >
-          Study Co
-        </h1>
-      </header>
+    <main className="flex flex-col items-center flex-1 p-10 mt-20 space-y-12 max-w-5xl mx-auto">
+      <h2 className="text-5xl font-bold mb-4 text-center">About Us</h2>
+      <p className="text-lg text-gray-300 text-center">
+        Study Co is dedicated to creating a distraction-free, effective study platform for students. 
+        Our mission is to help learners improve faster, stay organized, and get real-time AI assistance 
+        for all their subjects.
+      </p>
 
-      {/* Sidebar */}
-      <div
-        className={`fixed top-0 left-0 h-full bg-gray-900 text-white w-64 transform ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out z-50`}
-      >
-        <button
-          className="text-2xl p-4"
-          onClick={() => setSidebarOpen(false)}
-        >
-          &times;
-        </button>
-        <nav className="flex flex-col p-4 space-y-4">
-          <button
-            className="text-left hover:bg-red-800 px-2 py-2 rounded"
-            onClick={() => router.push("/")}
-          >
-            Home
-          </button>
-          <button
-            className="text-left hover:bg-red-800 px-2 py-2 rounded"
-            onClick={() => router.push("/pricing")}
-          >
-            Pricing
-          </button>
-          <button
-            className="text-left hover:bg-red-800 px-2 py-2 rounded"
-            onClick={() => router.push("/about-us")}
-          >
-            About Us
-          </button>
-          <button
-            className="text-left hover:bg-red-800 px-2 py-2 rounded"
-            onClick={() => router.push("/contact")}
-          >
-            Contact
-          </button>
-          <button
-            className="text-left hover:bg-red-800 px-2 py-2 rounded"
-            onClick={() => router.push("/help")}
-          >
-            Help
-          </button>
-          <button
-            className="text-left hover:bg-red-800 px-2 py-2 rounded"
-            onClick={() => router.push("/reviews")}
-          >
-            Reviews
-          </button>
-        </nav>
-      </div>
-
-      {/* Main Content */}
-      <main className="flex flex-col items-center flex-1 p-10 mt-10 space-y-12 max-w-5xl mx-auto">
-        <h2 className="text-5xl font-bold mb-4 text-center">About Us</h2>
-        <p className="text-lg text-gray-300 text-center">
-          Study Co is dedicated to creating a distraction-free, effective study platform for students. 
-          Our mission is to help learners improve faster, stay organized, and get real-time AI assistance 
-          for all their subjects.
-        </p>
-
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mt-10">
-          <div className="p-6 border border-gray-700 rounded">
-            <h3 className="text-2xl font-bold mb-2">Our Mission</h3>
-            <p>
-              To provide accessible, AI-powered study tools that help students
-              reach their full potential.
-            </p>
-          </div>
-          <div className="p-6 border border-gray-700 rounded">
-            <h3 className="text-2xl font-bold mb-2">Our Vision</h3>
-            <p>
-              To become the go-to platform for students worldwide, combining
-              technology and education seamlessly.
-            </p>
-          </div>
-          <div className="p-6 border border-gray-700 rounded">
-            <h3 className="text-2xl font-bold mb-2">Our Values</h3>
-            <p>
-              Innovation, transparency, and dedication to making learning easier
-              for every student.
-            </p>
-          </div>
-          <div className="p-6 border border-gray-700 rounded">
-            <h3 className="text-2xl font-bold mb-2">Meet the Team</h3>
-            <p>
-              A passionate group of developers, educators, and AI specialists
-              working together to improve study experiences.
-            </p>
-          </div>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="text-center p-4 text-gray-500">
-        &copy; 2025 Study Co™
-      </footer>
-    </div>
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mt-10">
+        <div className="p-6 border border-gray-700 rounded">
+          <h3 className="text-2xl font-bold mb-2">Our Mission</h3>
+          <p>To provide accessible, AI-powered study tools that help students reach their full potential.</p>
+        </div>
+        <div className="p-6 border border-gray-700 rounded">
+          <h3 className="text-2xl font-bold mb-2">Our Vision</h3>
+          <p>To become the go-to platform for students worldwide, combining technology and education seamlessly.</p>
+        </div>
+        <div className="p-6 border border-gray-700 rounded">
+          <h3 className="text-2xl font-bold mb-2">Our Values</h3>
+          <p>Innovation, transparency, and dedication to making learning easier for every student.</p>
+        </div>
+        <div className="p-6 border border-gray-700 rounded">
+          <h3 className="text-2xl font-bold mb-2">Meet the Team</h3>
+          <p>A passionate group of developers, educators, and AI specialists working together to improve study experiences.</p>
+        </div>
+      </section>
+    </main>
   );
 }
