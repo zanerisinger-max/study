@@ -17,34 +17,34 @@ export default function Home() {
 </div>
 
       {/* Header */}
-      <header className="flex justify-between items-center p-4 bg-black relative z-10">
-        <button
-          className="text-white text-2xl z-10"
-          onClick={() => setSidebarOpen(true)}
-        >
-          &#9776;
-        </button>
-        <h1
-          className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-bold cursor-pointer z-10"
-          onClick={() => router.push("/")}
-        >
-          Study Co
-        </h1>
-        <div className="flex space-x-4 z-10">
-          <button
-            className="bg-red-700 hover:bg-red-600 px-4 py-2 rounded transform transition-transform duration-300 hover:scale-105"
-            onClick={() => router.push("/login")}
-          >
-            Login
-          </button>
-          <button
-            className="bg-green-700 hover:bg-green-600 px-4 py-2 rounded transform transition-transform duration-300 hover:scale-105"
-            onClick={() => router.push("/signup")}
-          >
-            Create Account
-          </button>
-        </div>
-      </header>
+<header className="flex justify-between items-center p-4 bg-black relative z-10">
+  <button
+    className="text-white text-2xl z-10"
+    onClick={() => setSidebarOpen(true)}
+  >
+    &#9776;
+  </button>
+  <h1
+    className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-bold cursor-pointer z-10"
+    onClick={() => router.push("/")}
+  >
+    Study Co
+  </h1>
+  <div className="flex space-x-4 z-10">
+    <button
+      className="bg-red-700 hover:bg-red-600 px-4 py-2 rounded transform transition-transform duration-300 hover:scale-105"
+      onClick={() => router.push("/login")}
+    >
+      Login
+    </button>
+    <button
+      className="bg-green-700 hover:bg-green-600 px-4 py-2 rounded transform transition-transform duration-300 hover:scale-105"
+      onClick={() => router.push("/signup")}
+    >
+      Create Account
+    </button>
+  </div>
+</header>
 
       {/* Sidebar */}
       <div
