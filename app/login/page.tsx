@@ -25,7 +25,7 @@ export default function Login() {
 
     if (userFound) {
       setError("");
-      router.push("/after-login"); // placeholder page
+      router.push("/test"); // placeholder page
     } else {
       setError("Invalid username or password");
     }
