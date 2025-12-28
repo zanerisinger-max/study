@@ -1,4 +1,4 @@
-"use client"; //
+"use client";
 
 import "./globals.css";
 import { ReactNode } from "react";
@@ -8,24 +8,30 @@ import Header from "./components/Header";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const hideHeader = pathname === "/login" || pathname === "/signup";
+
+  // Pages that should NOT have header or gradient
+  const hideUI =
+    pathname === "/login" ||
+    pathname === "/signup";
 
   return (
     <html lang="en">
-      <body className="bg-black text-white relative min-h-screen flex flex-col">
-        
-        {/* GLOBAL TOP GRADIENT */}
-        <div className="absolute top-0 left-0 w-full h-48 pointer-events-none z-0">
-          <div className="w-full h-full bg-gradient-to-b from-red-700 via-red-900 to-transparent opacity-70 animate-pulse-slow" />
-        </div>
+      <body className="bg-black text-white min-h-screen flex flex-col relative">
+
+        {/* GLOBAL TOP GRADIENT (ONLY ON MAIN PAGES) */}
+        {!hideUI && (
+          <div className="absolute top-0 left-0 w-full h-48 pointer-events-none z-0">
+            <div className="w-full h-full bg-gradient-to-b from-red-700 via-red-900 to-transparent opacity-70 animate-pulse-slow" />
+          </div>
+        )}
 
         {/* HEADER + SIDEBAR */}
-        {!hideHeader && <Header />}
+        {!hideUI && <Header />}
 
         {/* PAGE CONTENT */}
-        <main className="relative z-10 flex-1 pt-20 min-h-screen">
+        <div className={`relative z-10 flex-1 ${!hideUI ? "pt-20" : ""}`}>
           {children}
-        </main>
+        </div>
 
         {/* GLOBAL FOOTER */}
         <footer className="border-t border-gray-800 text-gray-400 text-sm py-4 px-6 flex flex-col md:flex-row items-center justify-between gap-2">
